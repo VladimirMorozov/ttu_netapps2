@@ -12,6 +12,34 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Building_server</servlet-name>
 		<url-pattern>/building_server</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GetBuildingsServlet</servlet-name>
+		<servlet-class>buildingServer.GetBuildingsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetBuildingsServlet</servlet-name>
+		<url-pattern>/GetBuildingsServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SaveRoomServlet</servlet-name>
+		<servlet-class>buildingServer.SaveRoomServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SaveRoomServlet</servlet-name>
+		<url-pattern>/SaveRoomServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SaveBuildingServlet</servlet-name>
+		<servlet-class>buildingServer.SaveBuildingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SaveBuildingServlet</servlet-name>
+		<url-pattern>/SaveBuildingServlet</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
