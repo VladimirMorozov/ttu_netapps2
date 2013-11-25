@@ -64,6 +64,14 @@ public class Room implements Serializable{
 	public void setFunction(String function) {
 		this.function = function;
 	}
+
+	public ArrayList<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(ArrayList<Activity> activities) {
+		this.activities = activities;
+	}
 	
 	
 

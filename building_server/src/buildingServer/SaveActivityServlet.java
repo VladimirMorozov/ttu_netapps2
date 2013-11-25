@@ -1,38 +1,29 @@
 package buildingServer;
 
+import java.io.*;
 
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-
-import javax.jdo.PersistenceManager;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.jdo.*;
+import javax.servlet.http.*;
 
 import com.google.appengine.api.datastore.Key;
 
-import data.Building;
-import data.Room;
+import data.*;
 
-/**
- * !!! Haven't checked after restoring !!! 
- *
- */
 @SuppressWarnings("serial")
-public class SaveBuildingServlet extends HttpServlet{
+public class SaveActivityServlet extends HttpServlet{
+
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
-		Object input = readInputObject(req, resp);
-		Building building = (Building)input;
+		Object[] input = readInputObjects(req, resp, 2);
+		Activity activity = (Activity)input[0];
+		Key roomKey = (Key)input[1];
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	    	pm.makePersistent(building);
+	    	Room room = pm.getObjectById(Room.class, roomKey);
+	    	room.getActivities().add(activity);
+	    	pm.makePersistent(room);
 	    	
-	    	outputObject(resp, building.getKey());
+	    	outputObject(resp, "ok");
 	    } finally {
 	        pm.close();
 	    }
