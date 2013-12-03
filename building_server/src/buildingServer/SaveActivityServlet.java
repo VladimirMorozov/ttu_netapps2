@@ -16,7 +16,7 @@ public class SaveActivityServlet extends HttpServlet{
 		
 		Object[] input = readInputObjects(req, resp, 2);
 		Activity activity = (Activity)input[0];
-		Key roomKey = (Key)input[1];
+		String roomKey = (String)input[1];
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
 	    	Room room = pm.getObjectById(Room.class, roomKey);

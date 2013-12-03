@@ -16,7 +16,7 @@ public class SaveRoomServlet extends HttpServlet{
 		
 		Object[] input = readInputObjects(req, resp, 2);
 		Room room = (Room)input[0];
-		Key buildingKey = (Key)input[1];
+		String buildingKey = (String)input[1];
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
 	    	Building building = pm.getObjectById(Building.class, buildingKey);

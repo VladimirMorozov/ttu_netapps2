@@ -3,12 +3,11 @@ package data;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
-
-import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
 public class Building implements Serializable {
@@ -17,7 +16,8 @@ public class Building implements Serializable {
 	
 	@PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Key key;
+	@Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
+    private String key;
 	
 	@Persistent
 	private String address;
@@ -39,11 +39,11 @@ public class Building implements Serializable {
 		return key + " " + address + " " + floors + " rooms: ["+ roomsString +"]";
 	}
 
-	public Key getKey() {
+	public String getKey() {
 		return key;
 	}
 
-	public void setKey(Key key) {
+	public void setKey(String key) {
 		this.key = key;
 	}
 

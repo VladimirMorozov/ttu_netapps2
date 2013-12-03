@@ -41,6 +41,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>EditBuildingServlet</servlet-name>
+		<servlet-class>buildingServer.EditBuildingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditBuildingServlet</servlet-name>
+		<url-pattern>/EditBuildingServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>SaveBuildingServlet</servlet-name>
 		<servlet-class>buildingServer.SaveBuildingServlet</servlet-class>
 	</servlet>

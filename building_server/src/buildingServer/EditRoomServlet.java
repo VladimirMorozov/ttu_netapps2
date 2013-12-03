@@ -18,6 +18,8 @@ public class EditRoomServlet extends HttpServlet{
 		Room room = (Room)input;
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
+	    	/*Room originalRoom = pm.getObjectById(Room.class, room.getKey());
+	    	room.setActivities(originalRoom.getActivities());*/
 	    	pm.makePersistent(room);
 	    	
 	    	outputObject(resp, "ok");
